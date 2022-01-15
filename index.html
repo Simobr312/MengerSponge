@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8; X-Content-Type-Options=sniff" http-equiv="Content-Type" />
+    <script type="module" src="main.js"></script>
+    <title>Menger Sponge</title>
+    <style>
+        html, body {
+            margin: 0px;
+            background-color: white;
+        }
+        .controlls {
+            position: absolute;
+            width: 100%;
+        }
+        #depth {
+            position: relative;
+        }
+        canvas {
+            width: 99%;
+        }
+    </style>
+</head>
+<body>
+    <div class="controlls">
+        <center><input type="range" min="0" max="3" value="1" class="slider" id="depth"></center>
+        <div>x axis</div>
+        <input type="range" min="-300" max="300" value="100" class="slider" id="wx">
+        <div>y axis</div>
+        <input type="range" min="-300" max="300" value="100" class="slider" id="wy">
+        <div>z axis</div>
+        <input type="range" min="-300" max="300" value="100" class="slider" id="wz">
+    </div>
+    <canvas id='c'></canvas>
+</body>
+</html>
