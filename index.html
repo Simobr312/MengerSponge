@@ -18,19 +18,37 @@
         canvas {
             width: 99%;
         }
+        #play-pause-button {
+            display: none;
+        }
+        #play-pause-label {
+            position: fixed;
+            bottom: 10%;
+            left: 49%;
+            font-size: 50px;
+        }
+        #play-pause-button:checked + #play-pause-label::after {
+            content: '❙❙';
+        }
+        #play-pause-label::after {
+            content: '►';
+        }
     </style>
 </head>
 <body>
     <div class="controlls">
         <center><input type="range" min="0" max="3" value="1" class="slider" id="depth"></center>
-        <div>x axis</div>
+        <h4>angular velocity</h4>
+        <div>x</div>
         <input type="range" min="-300" max="300" value="100" class="slider" id="wx">
-        <div>y axis</div>
+        <div>y</div>
         <input type="range" min="-300" max="300" value="100" class="slider" id="wy">
-        <div>z axis</div>
+        <div>z</div>
         <input type="range" min="-300" max="300" value="100" class="slider" id="wz">
     </div>
     <canvas id='c'></canvas>
+    <input type="checkbox" id="play-pause-button">
+        <label for="play-pause-button" id="play-pause-label"></label>
 </body>
     <script src="main.js"></script>
 </html>

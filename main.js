@@ -1,12 +1,14 @@
 const MAXFPS = 120;
 const SPONGESIZE = 400;
 
-const vec3 = (x, y, z) => {x, y, z};
+const vec3 = (x, y, z) => {
+    return {x, y, z};
+};
 
 const FL = -500
 const CAMERA = vec3(0, 0, 600);
 const LIGHT = vec3(-1, -1, 1);
-const BASECOLOR = vec3(0, 128, 128);
+const BASECOLOR = vec3(255, 255, 255); //vec3(0, 128, 128);
 const STROKECOLOR = 'black'
 
 //
@@ -130,10 +132,11 @@ const getsponge = (size, n) => {
     return faces;
 }
 
-
+let isPlaying = false;
 let w = vec3();
 const updatesponge = (delta, w) => {
-    rotate(sponge, w.x * delta/1000, w.y * delta/1000, w.z * delta/1000);
+    if(isPlaying)
+        rotate(sponge, w.x * delta/1000, w.y * delta/1000, w.z * delta/1000);
     painterAlgorithm(sponge);
 };
 
@@ -162,7 +165,7 @@ const drawface = (face, origin) => {
     ctx.lineTo(origin.x + projected[3].x, origin.y + projected[3].y);
     ctx.closePath();
     ctx.fill();
-    //ctx.stroke();   
+    ctx.stroke();   
 }
 
 const drawsponge = () => {
@@ -206,6 +209,11 @@ let depth = depthSlider.value;
 depthSlider.addEventListener('change', () => {
     depth = depthSlider.value;
     sponge = getsponge(SPONGESIZE, depth);
+})
+
+let playPauseButton = document.getElementById('play-pause-button');
+playPauseButton.addEventListener('change', () => {
+    isPlaying = playPauseButton.checked; 
 })
 
 for(let axis in sliders)
