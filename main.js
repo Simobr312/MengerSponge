@@ -1,9 +1,7 @@
 const MAXFPS = 120;
 const SPONGESIZE = 400;
 
-const vec3 = (x, y, z) => {
-    return {x, y, z};
-};
+const vec3 = (x, y, z) => {x, y, z};
 
 const FL = -500
 const CAMERA = vec3(0, 0, 600);
@@ -131,6 +129,7 @@ const getsponge = (size, n) => {
 
     return faces;
 }
+
 
 let w = vec3();
 const updatesponge = (delta, w) => {
